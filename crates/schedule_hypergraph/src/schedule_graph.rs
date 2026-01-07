@@ -111,7 +111,7 @@ pub struct ScheduleGraph
     hyperedges: Vec<HyperEdge>,
 
     /// Adjacency list
-    /// To use this you insert a `NodeIndex` and the
+    /// To use this you access with a `NodeIndex` and the
     /// then you get a list of hyperedges-given by `EdgeIndex`-that
     /// this node is a part of. These `EdgeIndex`s can then
     /// be used to find the associated `HyperEdge` with
