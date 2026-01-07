@@ -19,14 +19,11 @@ To download and install the required dependencies
 cd ~/PATH/TO/PROJECT
 nix develop
 ```
-
 Run the large scale test that is referenced in the whitepaper
 ```bash
 cargo test -- test_large_scale_hypergraph
 ```
 
-
 # Contributing
 Contribution guidelines and current missing features are found in
 [CONTRIBUTING](/CONTRIBUTING.md)
-
