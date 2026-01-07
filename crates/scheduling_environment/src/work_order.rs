@@ -2,6 +2,8 @@ use std::collections::HashSet;
 
 use chrono::NaiveDate;
 use chrono::TimeDelta;
+use serde::Deserialize;
+use serde::Serialize;
 
 use crate::technician::Skill;
 
@@ -10,7 +12,7 @@ pub type NumberOfPeople = u64;
 
 pub type ActivityNumber = u64;
 pub type Work = f64;
-#[derive(Hash, Clone, Copy, Debug, PartialEq, PartialOrd, Ord, Eq)]
+#[derive(Hash, Clone, Copy, Debug, PartialEq, PartialOrd, Ord, Eq, Serialize, Deserialize)]
 pub struct Activity
 {
     activity_number: ActivityNumber,
@@ -47,6 +49,7 @@ impl Activity
         }
     }
 }
+#[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct WorkOrder
 {
     work_order_number: WorkOrderNumber,

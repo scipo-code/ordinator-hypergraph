@@ -1,7 +1,7 @@
 use std::collections::HashMap;
 use std::collections::HashSet;
 
-use schedule_hypergraph::schedule_graph::Period;
+use scheduling_environment::Period;
 use schedule_hypergraph::schedule_graph::ScheduleGraph;
 use schedule_hypergraph::schedule_graph::TechnicianId;
 use scheduling_environment::technician::Skill;
@@ -61,11 +61,8 @@ pub struct OperationalResource
 }
 
 impl From<&ScheduleGraph> for StrategicInstance {
-    fn from(value: &ScheduleGraph) -> Self {
-
+    fn from(_value: &ScheduleGraph) -> Self {
         // TODO [ ] - You have to derive the StrategicInstance
-        value.
-
         Self {
             strategic_work_order_parameters: todo!(),
             strategic_capacity: todo!(),

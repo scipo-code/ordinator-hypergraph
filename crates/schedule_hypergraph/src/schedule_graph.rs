@@ -75,7 +75,7 @@ pub(crate) enum Node
 }
 
 #[derive(Hash, Clone, Debug, PartialEq, PartialOrd, Ord, Eq)]
-struct ActivityNode
+pub(crate) struct ActivityNode
 {
     activity_number: ActivityNumber,
     number_of_people: NumberOfPeople,
@@ -129,7 +129,7 @@ pub struct ScheduleGraph
 /// Public methods
 impl ScheduleGraph
 {
-    pub(crate) fn new() -> Self
+    pub fn new() -> Self
     {
         Self {
             nodes: vec![],
@@ -157,6 +157,18 @@ impl ScheduleGraph
     {
         &self.incidence_list
     }
+
+    /// Returns the number of nodes in the graph
+    pub fn node_count(&self) -> usize
+    {
+        self.nodes.len()
+    }
+
+    /// Returns the number of hyperedges in the graph
+    pub fn hyperedge_count(&self) -> usize
+    {
+        self.hyperedges.len()
+    }
 }
 
 // impl ScheduleGraph {
@@ -166,6 +178,14 @@ impl ScheduleGraph
 /// Public API to add [`Nodes`] to the graph.
 impl ScheduleGraph
 {
+    pub fn add_skill(&mut self, skill: Skill) -> NodeIndex
+    {
+        if let Some(&existing) = self.skill_indices.get(&skill) {
+            return existing;
+        }
+        self.add_node(Node::Skill(skill))
+    }
+
     pub fn add_work_order(&mut self, work_order: &WorkOrder) -> Result<NodeIndex, ScheduleGraphErrors>
     {
         if !work_order

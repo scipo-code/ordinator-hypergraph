@@ -1,6 +1,5 @@
 use scheduling_environment::work_order::WorkOrderNumber;
 
-use crate::schedule_graph::HyperEdge;
 use crate::schedule_graph::Node;
 use crate::schedule_graph::ScheduleGraph;
 
@@ -30,12 +29,14 @@ impl ScheduleGraph
                     //
 
                     for hyperedge_index in hyperedge_indices {
-                        let hyperedge = self.hyperedges()[*hyperedge_index];
+                        let hyperedge = &self.hyperedges()[*hyperedge_index];
 
-                        match hyperedge {}
+                        match hyperedge.edge_type() {
+                            _ => todo!(),
+                        }
                     }
                 }
-                Node::Activity(activity_node) => todo!(),
+                Node::Activity(_) => todo!(),
                 Node::Period(period) => todo!(),
                 Node::Skill(skill) => todo!(),
                 Node::Day(naive_date) => todo!(),

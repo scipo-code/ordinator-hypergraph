@@ -2,8 +2,10 @@ use std::collections::BTreeSet;
 
 use chrono::NaiveDate;
 use chrono::NaiveDateTime;
+use serde::Deserialize;
+use serde::Serialize;
 
-#[derive(Clone, Copy, Debug, PartialEq, PartialOrd, Ord, Eq, Hash)]
+#[derive(Clone, Copy, Debug, PartialEq, PartialOrd, Ord, Eq, Hash, Serialize, Deserialize)]
 pub enum Skill
 {
     MtnMech,
@@ -22,7 +24,7 @@ pub enum TechnicianBuilderError
     },
 }
 
-#[derive(Clone, Debug, PartialEq, Eq)]
+#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
 pub struct Availability(NaiveDateTime, NaiveDateTime);
 
 impl Availability
